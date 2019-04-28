@@ -5,11 +5,11 @@ using homework3.Services.Interfaces;
 
 namespace homework3.BusinessLogic
 {
-    public class GetUsersInfoRequestHandler
+    public class GetContactsInfoRequestHandler
     {
-        private readonly IUserInfoService _userInfoService;
+        private readonly IContactInfoService _userInfoService;
 
-        public GetUsersInfoRequestHandler(IUserInfoService userInfoService)
+        public GetContactsInfoRequestHandler(IContactInfoService userInfoService)
         {
             _userInfoService = userInfoService;
         }

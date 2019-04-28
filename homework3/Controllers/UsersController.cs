@@ -7,16 +7,16 @@ using homework3.Models;
 namespace homework3.Controllers
 {
     [Route("api/users")]
-    public class UsersController : ControllerBase
+    public class ContactsController : ControllerBase
     {
-        private readonly GetUsersInfoRequestHandler _getUsersInfoRequestHandler;
-        public UsersController(GetUsersInfoRequestHandler getUsersInfoRequestHandler)
+        private readonly GetContactsInfoRequestHandler _getUsersInfoRequestHandler;
+        public ContactsController(GetContactsInfoRequestHandler getUsersInfoRequestHandler)
         {
             _getUsersInfoRequestHandler = getUsersInfoRequestHandler;
         }
 
         [HttpGet("{id}")]
-        public Task<Contact> GetUserInfo(Guid id)
+        public Task<Contact> GetContactInfo(Guid id)
         {
             return _getUsersInfoRequestHandler.Handle(id);
         }
