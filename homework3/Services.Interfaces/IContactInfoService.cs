@@ -9,5 +9,6 @@ namespace homework3.Services.Interfaces
     public interface IContactInfoService
     {
         Task<Contact> GetById(Guid id);
+        void AppendContact(Contact contact);
     }
 }

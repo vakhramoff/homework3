@@ -18,6 +18,16 @@ namespace homework3.Services
                 return await connection.QuerySingleAsync<Contact>("SELECT * FROM public.\"Contacts\" WHERE id = @id", new { id });
             }
         }
+
+        public async void AppendContact(Contact contact)
+        {
+            using (var connection = new NpgsqlConnection(ConnectionString))
+            {
+                string query = "INSERT INTO public.\"Contacts\" (id, email, nickname, phone, position) VALUES (@id, @email, @nickname, @phone, @position)";
+
+                await connection.ExecuteAsync(query, contact);
+            }
+        }
     }
 
 }

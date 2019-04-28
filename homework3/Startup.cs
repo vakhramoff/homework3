@@ -38,6 +38,7 @@ namespace homework3
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddScoped<GetContactsInfoRequestHandler>();
+            services.AddScoped<AddContactsInfoRequestHandler>();
             services.AddScoped<IContactInfoService, ContactInfoService>();
         }
 

@@ -7,11 +7,11 @@ namespace homework3.BusinessLogic
 {
     public class GetContactsInfoRequestHandler
     {
-        private readonly IContactInfoService _userInfoService;
+        private readonly IContactInfoService _contactInfoService;
 
-        public GetContactsInfoRequestHandler(IContactInfoService userInfoService)
+        public GetContactsInfoRequestHandler(IContactInfoService contactInfoService)
         {
-            _userInfoService = userInfoService;
+            _contactInfoService = contactInfoService;
         }
 
         public Task<Contact> Handle(Guid id)
@@ -20,7 +20,7 @@ namespace homework3.BusinessLogic
             {
                 throw new ArgumentException("Некорректный идентификатор пользователя", nameof(id));
             }
-            return _userInfoService.GetById(id);
+            return _contactInfoService.GetById(id);
         }
     }
 }
