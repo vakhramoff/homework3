@@ -9,13 +9,13 @@ namespace homework3.Services
 {
     public class ContactInfoService : IContactInfoService
     {
-        private const string ConnectionString = "host=localhost; port=5432; database=postgres; username=postgres; password=1234560";
+        private const string ConnectionString = "host=89.208.199.118; port=5432; database=PostgreSQL-2564; username=student; password=password";
 
         public async Task<Contact> GetById(Guid id)
         {
             using (var connection = new NpgsqlConnection(ConnectionString))
             {
-                return await connection.QuerySingleAsync<Contact>("SELECT * FROM public.\"Contacts\" WHERE id = @id", new { id });
+                return await connection.QuerySingleAsync<Contact>("SELECT * FROM \"vakhramoff\".\"Contacts\" WHERE id = @id", new { id });
             }
         }
 
@@ -23,7 +23,7 @@ namespace homework3.Services
         {
             using (var connection = new NpgsqlConnection(ConnectionString))
             {
-                string query = "INSERT INTO public.\"Contacts\" (id, email, nickname, phone, position) VALUES (@id, @email, @nickname, @phone, @position)";
+                string query = "INSERT INTO \"vakhramoff\".\"Contacts\" (id, email, nickname, phone, position) VALUES (@id, @email, @nickname, @phone, @position)";
 
                 await connection.ExecuteAsync(query, contact);
             }
