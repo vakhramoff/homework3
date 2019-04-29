@@ -24,11 +24,11 @@ namespace homework3.Controllers
         }
 
         [HttpPost("append")]
-        public void AppendContact([FromBody] Contact contact)
+        public Task<Contact> AppendContact([FromBody] Contact contact)
         {
             Guid guid = Guid.NewGuid();
             contact.Id = guid;
-            _addUsersInfoRequestHandler.Handle(contact);
+            return _addUsersInfoRequestHandler.Handle(contact);
         }
 
 

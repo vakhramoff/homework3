@@ -14,14 +14,14 @@ namespace homework3.BusinessLogic
             _contactInfoService = contactInfoService;
         }
 
-        public void Handle(Contact contact)
+        public Task<Contact> Handle(Contact contact)
         {
             if (contact.Id == Guid.Empty)
             {
                 throw new ArgumentException("Некорректный идентификатор пользователя", nameof(contact.Id));
             }
 
-            _contactInfoService.AppendContact(contact);
+            return _contactInfoService.AppendContact(contact);
         }
     }
 }

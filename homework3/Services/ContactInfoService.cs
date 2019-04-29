@@ -19,13 +19,14 @@ namespace homework3.Services
             }
         }
 
-        public async void AppendContact(Contact contact)
+        public async Task<Contact> AppendContact(Contact contact)
         {
             using (var connection = new NpgsqlConnection(ConnectionString))
             {
-                string query = "INSERT INTO \"vakhramoff\".\"Contacts\" (id, email, nickname, phone, position) VALUES (@id, @email, @nickname, @phone, @position)";
+                string query = "INSERT INTO \"vakhramoff\".\"Contacts\" (id, email, nickname, phone, position) VALUES (@id, @email, @nickname, @phone, @position) RETURNING *";
 
-                await connection.ExecuteAsync(query, contact);
+
+                return await connection.QuerySingleAsync<Contact>(query, contact);
             }
         }
     }
